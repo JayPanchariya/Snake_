@@ -60,7 +60,8 @@ while game_is_on:
             for segment in serpent.segments:
                 segment.goto(1000,1000)
             serpent.reset()
-
+    food.change_gif()
+    
 wn.exitonclick()
     # turtle.Terminator()
     # time.sleep(delay)

@@ -1,19 +1,19 @@
 from turtle import Turtle
 import turtle
 import random
+
 class Insect(Turtle):
     def __init__(self, width_screen, height_screen):
         super().__init__()
         self. width_screen= width_screen
         self. height_screen= height_screen
-        play_gif="food_lover.gif"
+        play_gif="centipede.gif"
         turtle.register_shape(play_gif)
         self.shape(play_gif)
         self.penup()
         self.color("red")
-      
-
-        self.shapesize(stretch_wid=1, stretch_len=1)
+    
+        self.shapesize(stretch_wid=10, stretch_len=10)
         self.speed("fastest")
         self.goto(0,160)
 
