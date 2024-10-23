@@ -47,10 +47,13 @@ class Snake:
         if self.segments[0].heading() != 180:
             self.segments[0].setheading(0)
     
-
     def extend(self):
         self.add_segment(self.segments[-1].position())
 
+    def short(self):
+        current_seg=self.segments.pop()
+        current_seg.goto(1000,1000)
+    
     def add_segment(self, position):
 	# CREATE A NEW SEGMENT AT THE POSITION position, GREEN COLOR AND SQUARE, AND APPEND IT 		TO THE LIST OF SEGMENTS OF THE SNAKE. 
         new_segment=Turtle()
@@ -58,6 +61,7 @@ class Snake:
         new_segment.shape("circle")
         new_segment.color("gray")
         new_segment.penup()
+        new_segment.goto(position)
         self.segments.append(new_segment)
     
     def reset(self):

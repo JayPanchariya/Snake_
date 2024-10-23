@@ -12,15 +12,12 @@ class Food(Turtle):
         turtle.register_shape(self.m_gif2)
         self.shape(self.m_gif)
         self.penup()
-        self.color("pink")
-        self.shapesize(stretch_wid=1, stretch_len=1)
-        self.speed("fastest")
         self.a=self.m_gif
     
 
     def refresh(self):
-        x=random.randint(- ((self. width_screen//2)-10),((self. width_screen//2)-10) )
-        y=random.randint(-((self. height_screen//2)-10),((self. height_screen//2)-10))
+        x=random.randint(- ((self. width_screen//2)-20),((self. width_screen//2)-20) )
+        y=random.randint(-((self. height_screen//2)-20),((self. height_screen//2)-20))
         self.goto(x,y)
     
     def change_gif(self):   # Looping through the 2 gifs

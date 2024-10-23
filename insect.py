@@ -12,13 +12,14 @@ class Insect(Turtle):
         self.shape(play_gif)
         self.penup()
         self.color("red")
-    
         self.shapesize(stretch_wid=10, stretch_len=10)
         self.speed("fastest")
         self.goto(0,160)
-
+        
+        
     def refresh(self):
         x=random.randint(- ((self. width_screen//2)-10),((self. width_screen//2)-10) )
         y=random.randint(-((self. height_screen//2)-10),((self. height_screen//2)-10))
         self.goto(x,y)    
+    
     

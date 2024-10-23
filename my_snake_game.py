@@ -30,7 +30,7 @@ wn.onkey(serpent.down, "Down")
 wn.onkey(serpent.left, "Left")
 wn.onkey(serpent.right, "Right")
 # wn.onkeypress(stop,'g')
-
+boundary=15
 while game_is_on:
     wn.update()
     time.sleep(sleep_speed)
@@ -40,19 +40,30 @@ while game_is_on:
         serpent.extend()
         scoreboard.increase_score(10)
     
-    if serpent.segments[0].distance(insect) < 20:
+    # if len(serpent.segments)<2:
+    #     insect.goto(1000,1000) 
+        
+    if serpent.segments[0].distance(insect) < 20 and len(serpent.segments) <=2 :
         insect.refresh()
-        serpent.extend()
-        scoreboard.increase_score(20)    
+        scoreboard.decrease_score(10)  
     
-    if serpent.segments[0].xcor() > ((width_wn//2)-20) or serpent.segments[0].xcor() < -((width_wn//2)-20) or serpent.segments[0].ycor() > ((height_wn//2)-20) or serpent.segments[0].ycor() < -((height_wn//2)-20):
+    
+    if serpent.segments[0].distance(insect) < 20 and len(serpent.segments) >2 :
+        insect.refresh()
+        serpent.short()
+        scoreboard.decrease_score(20)    
+    
+    if serpent.segments[0].xcor() > ((width_wn//2)-boundary) or serpent.segments[0].xcor() < -((width_wn//2)-boundary) or serpent.segments[0].ycor() > ((height_wn//2)-boundary) or serpent.segments[0].ycor() < -((height_wn//2)-boundary):
         # game_is_on = False
-        # scoreboard.game_over()
         for segment in serpent.segments:
             segment.goto(1000,1000)
+        
+        scoreboard.game_over()
         serpent.reset()
         scoreboard.reset()
+        
         time.sleep(2)
+        
         wn.update()
     
     for segment in serpent.segments[2:]:
@@ -60,6 +71,10 @@ while game_is_on:
             for segment in serpent.segments:
                 segment.goto(1000,1000)
             serpent.reset()
+            time.sleep(2)
+            scoreboard.game_over()
+            wn.bye()
+            
     food.change_gif()
     
 wn.exitonclick()
